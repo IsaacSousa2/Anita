@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default function P01() {
   const [inputValue, setInputValue] = useState('');
   const [isMounted, setIsMounted] = useState(false);
 
@@ -15,12 +15,12 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const correctAnswer = 9; // 9
-    const userAnswer = parseInt(inputValue, 10);
+    const correctAnswer = '2024-08-09'; // Data correta no formato 'YYYY-MM-DD'
+    const userAnswer = inputValue;
 
     if (userAnswer === correctAnswer) {
       // Condição de resposta
-      redirect('/pergunta02'); // Change rota
+      redirect('/pergunta02'); // Alterar para a rota desejada
     } else {
       // Se a resposta estiver errada, mostra um alert
       alert('Sério?? Não te lembra?? te vira pião!');
@@ -34,20 +34,19 @@ export default function Home() {
     <div className="flex items-center justify-center text-center h-screen w-full bg-gradient-to-r from-gray-900 to-purple-800">
       <div className="flex flex-col items-center max-w-[1000px] gap-8 px-6 py-8 bg-gray-900 shadow-2xl rounded-2xl w-full sm:w-[80%] md:w-[60%]">
         <h3 className="text-base md:text-xl font-semibold text-white mb-0 leading-snug">
-            Parabéns gatinha, as vezes pensa né? Preparada pro nível 2?? 
+          Parabéns gatinha, as vezes pensa né? Preparada pro nível 2??
         </h3>
         <h1 className="text-3xl md:text-4xl font-semibold text-white mb-6 leading-snug">
-            Que dia foi o nosso primeiro beijo?
+          Que dia foi o nosso primeiro beijo?
         </h1>
         <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4 text-white">
           <input
-            type="number"
+            type="date"
             className="w-full p-4 text-center text-lg border-2 border-gray-700 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             required
-            alt="Ex: 2"
-            placeholder="Digite sua resposta"
+            placeholder="Selecione a data"
           />
           <button
             type="submit"
